@@ -169,7 +169,7 @@ echo '{
 systemctl enable v2ray
 systemctl start v2ray
 echo "INSTALLING CRONTAB"
-echo -e "@reboot /etc/init.d/vpnserver restart\n" > /tmp/my-crontab
+echo "@reboot /etc/init.d/vpnserver restart\n" > /tmp/my-crontab
 crontab /tmp/my-crontab
 chmod +x /etc/init.d/vpnserver
 /etc/init.d/vpnserver restart
