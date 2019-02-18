@@ -10,9 +10,8 @@ echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
 apt-get -y install iptables-persistent
 echo "INSTALLING SOFTETHER VPN SERVER"
-cd /tmp && wget http://www.softether-download.com/files/softether/v4.28-9669-beta-2018.09.11-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
-tar xzvf /tmp/*vpnserver*
-cd /tmp/vpnserver 
+tar xzvf *vpnserver*
+cd vpnserver 
 echo -e "1\n1\n1\n" | make
 cd ..
 mv vpnserver /usr/local
