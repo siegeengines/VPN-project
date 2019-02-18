@@ -67,6 +67,8 @@ echo '{
 systemctl enable v2ray
 systemctl start v2ray
 echo "INSTALLING SOFTETHER VPN SERVER"
+cd /tmp
+wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.28-9669-beta/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
 tar xzvf *vpnserver*
 cd vpnserver 
 echo -e "1\n1\n1\n" | make
