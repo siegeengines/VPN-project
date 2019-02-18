@@ -109,6 +109,7 @@ COMMIT
 COMMIT
 # Completed on Tue Jan  8 06:07:58 2019 ' > /etc/iptables/rules.v4
 echo "INSTALLING V2RAY PROXY SERVER"
+cd /tmp
 wget https://install.direct/go.sh
 mkdir /v2ray
 bash go.sh
