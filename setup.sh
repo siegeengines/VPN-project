@@ -9,6 +9,67 @@ apt-get -y install build-essential dnsmasq
 echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
 echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
 apt-get -y install iptables-persistent
+echo "INSTALLING V2RAY PROXY SERVER"
+cd /tmp
+wget https://install.direct/go.sh
+mkdir /v2ray
+bash go.sh
+echo '{
+  "log": {
+    "access": "/v2ray/access.log",
+    "error": "/v2ray/error.log",
+	"loglevel": "debug"
+  },
+  "inbounds": [
+    {
+      "port": 443, 
+      "protocol": "vmess",   
+      "settings": {
+        "clients": [
+          {
+            "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  
+            "alterId": 64
+          }
+        ],
+		"disableInsecureEncryption": true
+      },
+	    "streamSettings": {
+        "network": "mkcp", 
+        "kcpSettings": {
+          "uplinkCapacity": 500,
+          "downlinkCapacity": 500,
+          "congestion": true,
+          "header": {
+            "type": "wechat-video"
+          }
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom", 
+      "settings": {}
+    }
+  ],
+   "routing": {
+    "strategy": "rules",
+    "settings": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "type": "field",
+          "outboundTag": "block",
+          "protocol": [
+            "bittorrent"
+          ]
+        }
+      ]
+    }
+  }
+}' > /etc/v2ray/config.json
+systemctl enable v2ray
+systemctl start v2ray
 echo "INSTALLING SOFTETHER VPN SERVER"
 tar xzvf *vpnserver*
 cd vpnserver 
@@ -108,67 +169,6 @@ COMMIT
 :sshguard - [0:0]
 COMMIT
 # Completed on Tue Jan  8 06:07:58 2019 ' > /etc/iptables/rules.v4
-echo "INSTALLING V2RAY PROXY SERVER"
-cd /tmp
-wget https://install.direct/go.sh
-mkdir /v2ray
-bash go.sh
-echo '{
-  "log": {
-    "access": "/v2ray/access.log",
-    "error": "/v2ray/error.log",
-	"loglevel": "debug"
-  },
-  "inbounds": [
-    {
-      "port": 443, 
-      "protocol": "vmess",   
-      "settings": {
-        "clients": [
-          {
-            "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  
-            "alterId": 64
-          }
-        ],
-		"disableInsecureEncryption": true
-      },
-	    "streamSettings": {
-        "network": "mkcp", 
-        "kcpSettings": {
-          "uplinkCapacity": 500,
-          "downlinkCapacity": 500,
-          "congestion": true,
-          "header": {
-            "type": "wechat-video"
-          }
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "protocol": "freedom", 
-      "settings": {}
-    }
-  ],
-   "routing": {
-    "strategy": "rules",
-    "settings": {
-      "domainStrategy": "AsIs",
-      "rules": [
-        {
-          "type": "field",
-          "outboundTag": "block",
-          "protocol": [
-            "bittorrent"
-          ]
-        }
-      ]
-    }
-  }
-}' > /etc/v2ray/config.json
-systemctl enable v2ray
-systemctl start v2ray
 echo "INSTALLING CRONTAB"
 echo "@reboot /etc/init.d/vpnserver restart\n" > /tmp/my-crontab
 crontab /tmp/my-crontab
