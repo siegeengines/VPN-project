@@ -1,8 +1,6 @@
 #!/bin/sh
 apt-get -y install build-essential dnsmasq nano
 echo "INSTALLING SOFTETHER VPN SERVER"
-cd /tmp
-wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.28-9669-beta/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
 tar xzvf *vpnserver*
 cd vpnserver 
 printf "1\n1\n1\n" | make
