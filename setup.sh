@@ -43,8 +43,8 @@ echo '{
 	    "streamSettings": {
         "network": "mkcp", 
         "kcpSettings": {
-          "uplinkCapacity": 500,
-          "downlinkCapacity": 500,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
           "congestion": true,
           "header": {
             "type": "wechat-video"
