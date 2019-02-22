@@ -163,7 +163,6 @@ COMMIT
 -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
 -A FORWARD -m string --string "find_node" --algo bm -j DROP
 -A FORWARD -s 192.168.7.0/24 -d 192.168.7.0/24 -j DROP
--A FORWARD -s 0.0.0.0/0 -d 0.0.0.0/0 -j DROP
 :OUTPUT ACCEPT [7532:12168496]
 -A OUTPUT -p udp --dport 67:68 --sport 67:68 -j ACCEPT
 -A OUTPUT -d 192.168.7.0/24 -j DROP
