@@ -25,7 +25,7 @@ echo '{
       "settings": {
         "vnext": [
 		  {
-            "address": "shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "address": "m1.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
             "port": 443,  // 服务器端口
             "users": [
               {
@@ -98,7 +98,7 @@ echo '{
       "settings": {
         "vnext": [
           {
-            "address": "v10.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "address": "s1.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
             "port": 443,  // 服务器端口
             "users": [
               {
@@ -109,7 +109,7 @@ echo '{
             ]
           },
 		  {
-            "address": "v2.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "address": "s2.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
             "port": 443,  // 服务器端口
             "users": [
               {
@@ -120,73 +120,7 @@ echo '{
             ]
           },
 		  {
-            "address": "v3.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		  {
-            "address": "v4.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		  {
-            "address": "v5.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		   {
-            "address": "v6.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		   {
-            "address": "v7.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		  {
-            "address": "v8.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
-            "port": 443,  // 服务器端口
-            "users": [
-              {
-                "id": "a2d029c7-ee40-42bd-b526-69ddbaf8ea91",  // 用户 ID，必须与服务器端配置相同
-                "alterId": 64, // 此处的值也应当与服务器相同
-				"security": "auto"
-              }
-            ]
-          },
-		  {
-            "address": "v9.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
+            "address": "s3.shebao.gq", // 服务器地址，请修改为你自己的服务器 IP 或域名
             "port": 443,  // 服务器端口
             "users": [
               {
