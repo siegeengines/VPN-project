@@ -169,7 +169,7 @@ COMMIT
 # Completed on Tue Jan  8 06:07:58 2019 ' > /etc/iptables/rules.v4
 echo "INSTALLING CRONTAB"
 echo "@reboot /etc/init.d/vpnserver restart
-@daily apt-get update && apt-get upgrade -y && reboot" > /tmp/my-crontab
+@daily apt-get update && apt-get upgrade -y && /sbin/shutdown -r now" > /tmp/my-crontab
 crontab /tmp/my-crontab
 chmod +x /etc/init.d/vpnserver
 /etc/init.d/vpnserver restart
