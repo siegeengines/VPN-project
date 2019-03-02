@@ -1,5 +1,4 @@
 #!/bin/sh
-chmod +x *.sh
 apt-get -y install build-essential dnsmasq nano
 echo "INSTALLING SOFTETHER VPN SERVER"
 tar xzvf *vpnserver*
