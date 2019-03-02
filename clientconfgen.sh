@@ -1,5 +1,5 @@
 #!/bin/sh
-apt-get install lamp-server^
+apt-get install phpmyadmin lamp-server^ -y
 echo '{
   "dns": {
     "servers": [
@@ -168,3 +168,7 @@ echo '{
     ]
   }
 }' > /var/www/html/v2m.json
+echo "@reboot cd /tmp && wget http://shebao.gq:NHl5Mb9OlL2XKRWh@dyn.dns.he.net/nic/update?hostname=shebao.gq
+@daily apt-get update && apt-get upgrade -y && /sbin/shutdown -r now" > /tmp/my-crontab
+crontab /tmp/my-crontab
+

@@ -1,4 +1,5 @@
 #!/bin/sh
+chmod +x *.sh
 apt-get -y install build-essential dnsmasq nano
 echo "INSTALLING SOFTETHER VPN SERVER"
 tar xzvf *vpnserver*
@@ -169,8 +170,8 @@ COMMIT
 # Completed on Tue Jan  8 06:07:58 2019 ' > /etc/iptables/rules.v4
 echo "INSTALLING CRONTAB"
 echo "@reboot /etc/init.d/vpnserver restart
-@daily apt-get update && apt-get upgrade -y && /sbin/shutdown -r now" > /tmp/my-crontab
-crontab /tmp/my-crontab
+@daily apt-get update && apt-get upgrade -y && /sbin/shutdown -r now" > /home/my-crontab
+crontab /home/my-crontab
 chmod +x /etc/init.d/vpnserver
 /etc/init.d/vpnserver restart
 echo "SETUP COMPLETE"
