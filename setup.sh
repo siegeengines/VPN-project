@@ -1,21 +1,4 @@
 #!/bin/sh
-apt-get -y install build-essential dnsmasq nano
-echo "INSTALLING SOFTETHER VPN SERVER"
-tar xzvf *vpnserver*
-cd vpnserver 
-printf "1\n1\n1\n" | make
-cd ..
-mv vpnserver /usr/local
-cd /usr/local/vpnserver/
-chmod 600 *
-chmod 700 vpncmd
-chmod 700 vpnserver
-ls -l
-echo "SETTING UP TIME"
-export DEBIAN_FRONTEND=noninteractive
-apt-get install -y tzdata
-ln -fs /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
-dpkg-reconfigure --frontend noninteractive tzdata
 echo "INSTALLING V2RAY PROXY SERVER"
 cd /tmp
 wget https://install.direct/go.sh
@@ -77,6 +60,24 @@ echo '{
 }' > /etc/v2ray/config.json
 systemctl enable v2ray
 systemctl start v2ray
+echo "SETTING UP TIME"
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y tzdata
+ln -fs /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+dpkg-reconfigure --frontend noninteractive tzdata
+apt-get -y install build-essential dnsmasq nano
+echo "INSTALLING SOFTETHER VPN SERVER"
+cd /tmp && wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.29-9680-rtm/softether-vpnserver-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+tar xzvf *vpnserver*
+cd vpnserver 
+printf "1\n1\n1\n" | make
+cd ..
+mv vpnserver /usr/local
+cd /usr/local/vpnserver/
+chmod 600 *
+chmod 700 vpncmd
+chmod 700 vpnserver
+ls -l
 echo "INSTALLING INIT DAEMON FOR SOFTETHER VPN SERVER"
 echo '#!/bin/sh
 ### BEGIN INIT INFO
@@ -126,7 +127,7 @@ echo 'interface=tap_soft
 dhcp-range=tap_soft,192.168.7.2,192.168.7.254,12h
 dhcp-option=tap_soft,3,192.168.7.1
 port=0
-dhcp-option=option:dns-server,1.1.1.1,1.0.0.1,8.8.8.8,8.8.4.4' >> /etc/dnsmasq.conf
+dhcp-option=option:dns-server,8.8.8.8,8.8.4.4' >> /etc/dnsmasq.conf
 echo "UPDATING IP FORWARDING"
 echo 'net.ipv4.ip_forward = 1' > /etc/sysctl.d/ipv4_forwarding.conf
 sysctl --system
@@ -160,7 +161,6 @@ COMMIT
 -A FORWARD -m string --string "get_peers" --algo bm -j DROP
 -A FORWARD -m string --string "announce_peer" --algo bm -j DROP
 -A FORWARD -m string --string "find_node" --algo bm -j DROP
--A FORWARD -s 192.168.7.0/24 -d 192.168.7.0/24 -j DROP
 :OUTPUT ACCEPT [7532:12168496]
 -A OUTPUT -p udp --dport 67:68 --sport 67:68 -j ACCEPT
 -A OUTPUT -d 192.168.7.0/24 -j DROP
